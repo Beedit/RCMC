@@ -1,22 +1,10 @@
 require('dotenv').config();
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: process.env.PORT });
+const ws = require('./websocket/websocket.js');
 const Bot = require('./discord/bot.js');
 
 const bot = new Bot;
+const websocket = new ws;
 
 bot.init(process.env.TOKEN);
 
-wss.on('connection', function connection(ws) {
-    ws.on('message', function message(data) {
-        data = JSON.parse(data);
-        if (data.method == "testConnection"){
-            wss.clients.forEach(function each(client) {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(JSON.stringify({method: "message", data: "Connection Successful"}));
-                console.log("Connection Successful");
-            }
-            });
-        }
-    });
-});
+websocket.init();

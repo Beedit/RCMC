@@ -31,7 +31,20 @@ class Bot {
         }
 
         registerCommands();
+
+        this.client.on('interactionCreate', async interaction => {
+            if(interaction.isChatInputCommand){
+                let command = this.commands.get(interaction.commandName);
+
+                try {
+                    await command.execute(interaction);
+                }
+                catch (error) {
+                    console.error(error);
+                    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+                }
+            }
+        });
     }
 }
-
 module.exports = Bot;
