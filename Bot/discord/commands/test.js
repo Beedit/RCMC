@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("test")
 		.setDescription("test"),
-	async execute(interaction, websocket) {
+	async execute(interaction, ws) {
 		await interaction.reply("");
 	},
 };

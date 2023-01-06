@@ -12,7 +12,7 @@ class Bot {
     constructor() {
         this.client = new Discord.Client({intents: []});
         this.commands = new Discord.Collection();
-        this.websocket = null;
+        this.ws = null;
     }
 
     login(token) {
@@ -20,7 +20,7 @@ class Bot {
     }
 
     init(ws) {
-        this.websocket = ws
+        this.ws = ws
         this.login(process.env.TOKEN);
 
         this.client.on('ready', () => {
@@ -40,7 +40,7 @@ class Bot {
                 let command = this.commands.get(interaction.commandName);
 
                 try {
-                    await command.execute(interaction, this.websocket);
+                    await command.execute(interaction, this.ws);
                 }
                 catch (error) {
                     console.error(error);
