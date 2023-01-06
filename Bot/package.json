@@ -1,0 +1,23 @@
+{
+  "name": "rcmc",
+  "version": "1.0.0",
+  "description": "Remote Controlled Minecraft",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beedit/RCMC.git"
+  },
+  "author": "beedit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Beedit/RCMC/issues"
+  },
+  "homepage": "https://beedit.gay/projects",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  }
+}
