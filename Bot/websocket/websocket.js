@@ -8,19 +8,28 @@ class ws {
 
     init(bot) {
         this.bot = bot;
-
-        this.wss.on('connection', function connection(ws) {
+        // This is here because in line 18, it says that this.wss is undefined and I don't know why.
+        let wss = this.wss;
+        
+        wss.on('connection', function connection(ws) {
             ws.on('message', function message(data) {
                 data = JSON.parse(data);
                 if (data.method == "testConnection"){
                     wss.clients.forEach(function each(client) {
-                    if (client.readyState === WebSocket.OPEN) {
-                        client.send(JSON.stringify({method: "message", data: "Connection Successful"}));
-                        console.log("Connection Successful");
-                    }
+                        if (client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({method: "testConnectionResponse"}));
+                            console.log("Connection Successful");
+                        }
                     });
                 }
             });
+        });
+    }
+    send(data) {
+        this.wss.clients.forEach(function each(client) {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(data);
+            }
         });
     }
 }

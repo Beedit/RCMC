@@ -1,11 +1,11 @@
 require('dotenv').config();
-const ws = require('./websocket/websocket.js');
+const websocket = require('./websocket/websocket.js');
 const Bot = require('./discord/bot.js');
 
 const bot = new Bot;
-const websocket = new ws;
+const ws = new websocket;
 
 
-websocket.init(bot);
-bot.init(websocket);
+ws.init(bot);
+bot.init(ws);
 
