@@ -3,9 +3,12 @@ const WebSocket = require('ws');
 class ws {
     constructor() {
         this.wss = new WebSocket.Server({ port: process.env.PORT });
+        this.bot = null;
     }
 
-    init() {
+    init(bot) {
+        this.bot = bot;
+
         this.wss.on('connection', function connection(ws) {
             ws.on('message', function message(data) {
                 data = JSON.parse(data);
@@ -19,9 +22,6 @@ class ws {
                 }
             });
         });
-    }
-    test() {
-        console.log("Test");
     }
 }
 

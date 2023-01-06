@@ -12,14 +12,17 @@ class Bot {
     constructor() {
         this.client = new Discord.Client({intents: []});
         this.commands = new Discord.Collection();
+        this.websocket = null;
     }
 
     login(token) {
         this.client.login(token);
     }
 
-    init() {
+    init(ws) {
+        this.websocket = ws
         this.login(process.env.TOKEN);
+
         this.client.on('ready', () => {
             console.log(`Bot logged in as ${this.client.user.tag}!`);
         });
@@ -37,7 +40,7 @@ class Bot {
                 let command = this.commands.get(interaction.commandName);
 
                 try {
-                    await command.execute(interaction);
+                    await command.execute(interaction, this.websocket);
                 }
                 catch (error) {
                     console.error(error);

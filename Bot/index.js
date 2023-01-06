@@ -5,6 +5,7 @@ const Bot = require('./discord/bot.js');
 const bot = new Bot;
 const websocket = new ws;
 
-bot.init(process.env.TOKEN);
 
-websocket.init();
+websocket.init(bot);
+bot.init(websocket);
+
