@@ -1,7 +1,7 @@
 require('dotenv').config();
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: process.env.PORT });
-const Bot = require('./bot.js');
+const Bot = require('./discord/bot.js');
 
 const bot = new Bot;
 
