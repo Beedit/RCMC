@@ -34,7 +34,7 @@ ws.onOpen = () => {
 ws.onClose = () => {
     if(Settings.enabled){
         connected = false
-        if (!connected && !unload && times < Settings.retryConnection){
+        if (!connected && !unload){
             chat("There has been a connection issue with the websocket. Attempting to reconnect")
         } else if(unload) {
             return;
