@@ -31,6 +31,14 @@ class Settings {
     })
     host = "localhost";
 
+    @TextProperty({
+        name: "ReconnectAttempts",
+        description: "The amount of times the module with try and reconnect before failing.",
+        category: "General",
+        placeholer: "5"
+    })
+    reconnectAttempts = 5;
+
     constructor() {
         this.initialize(this);
         this.setCategoryDescription("General", "&dRCMC Settings");
