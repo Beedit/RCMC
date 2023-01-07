@@ -29,10 +29,10 @@ cd Bot
 npm i
 cp .env.example .env
 ```
-5. Edit .env with your own preffered text editor and add the values
-PORT is the port this runs on locally. Probably an awful idea to port forward this as it has no security.
-TOKEN is the token of your discord bot. Create an application [here](https://discord.com/developers/applications) and create a bot. The thing you need to place here is the token. To get one you may need to hit the regenerate button.
-CLIENTID is the ID of your application. Its found under general information on the same page as the bot ([here](https://discord.com/developers/applications))
+5. Edit .env with your own preffered text editor and add the values\
+PORT is the port this runs on locally. Probably an awful idea to port forward this as it has no security.\
+TOKEN is the token of your discord bot. Create an application [here](https://discord.com/developers/applications) and create a bot. The thing you need to place here is the token. To get one you may need to hit the regenerate button.\
+CLIENTID is the ID of your application. Its found under general information on the same page as the bot ([here](https://discord.com/developers/applications))\
 SERVERID is the ID of the discord server where you are running the bot.
 6. Invite the bot to your server using the url generator under Oauth2 (WITH applications.commands AND bot TICKED).
 7. Run the bot
