@@ -2,6 +2,8 @@ import WebSocket from "WebSocket";
 import Settings from "./config";
 
 let ws = new WebSocket(`ws://${Settings.host}:${Settings.port}`);
+const mc = mc = Player.getMinecraft()
+
 
 let unload = false
 let connected = false
@@ -21,7 +23,7 @@ ws.onMessage = (msg) => {
     }
 
     if (msg.method == "command") {
-        ChatLib.say(msg.data)
+        ChatLib.say(`/${msg.data}`)
     }
 }
 
@@ -47,16 +49,19 @@ ws.onClose = () => {
 }
 
 register("command", (...args) => {
-    if(args[0] == "settings" || args[0] == "s"){
+    if(args[0] == "settings"){
         Settings.openGUI();
     }
     else if(args[0] == "testconnection"){
         ws.send(JSON.stringify({ method: "testConnection" }));
     }
-}).setName("rcmc").setTabCompletions(["settings", "s"]);
+    else if (args[0] == "t"){
+        mc.ScreenshotHelper().func_148259_a()
+    }
+}).setName("rcmc").setTabCompletions(["settings", "testconnection"]);
 
-register("worldUnload", () =>{
-    unload = true
-    chat("Connection stopped.")
+register("gameunload", () => {
+    unload = true;
     ws.close();
-})
+    chat("Disconnected from the websocket server.");
+});

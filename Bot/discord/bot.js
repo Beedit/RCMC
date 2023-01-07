@@ -48,5 +48,8 @@ class Bot {
             }
         });
     }
+    send(data) {
+        // TODO
+    }
 }
 module.exports = Bot;
