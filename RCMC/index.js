@@ -55,8 +55,8 @@ register("command", (...args) => {
     else if(args[0] == "testconnection"){
         ws.send(JSON.stringify({ method: "testConnection" }));
     }
-    else if (args[0] == "t"){
-        mc.ScreenshotHelper().func_148259_a()
+    else if (args[0] == "help"){
+        ChatLib.chat("RCMC Help\n")
     }
 }).setName("rcmc").setTabCompletions(["settings", "testconnection"]);
 

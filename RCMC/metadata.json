@@ -3,7 +3,7 @@
     "creator": "beedit",
     "description": "Remote Control Minecraft client!",
     "version": "0.0.1",
-    "entry": "index.js",
+    "entry": "dev.js",
     "requires": [
         "WebSocket",
         "Vigilance"
