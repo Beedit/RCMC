@@ -23,8 +23,8 @@ class ws {
                     });
                 }
                 else if (data.method == "statusUpdate"){
-                    info = JSON.parse(data.data)
-                    bot.send(`${info.gametype}`)
+                    data = JSON.parse(data.data)
+                    bot.send(`${data}`)
                 }
             });
         });

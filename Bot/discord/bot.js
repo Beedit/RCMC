@@ -48,8 +48,10 @@ class Bot {
             }
         });
     }
+    // This is a really bad system because it doesnt just... send a message and instead will edit a response to a message already sent with some data.
     send(data) {
         // TODO
+        console.log(data)
     }
 }
 module.exports = Bot;

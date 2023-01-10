@@ -6,6 +6,6 @@ module.exports = {
 		.setDescription("Gets the status of the connected account."),
         async execute(interaction, ws) {
 		await interaction.reply("Getting status");
-        await ws.send(JSON.stringify({method : "status", data : ""}))
+        ws.send(JSON.stringify({method : "statusGet", data : ""}))
 	},
 };
