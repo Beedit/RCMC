@@ -1,5 +1,5 @@
 const mc = Client.getMinecraft();
-const Base64 = new java.util.Base64.Encoder
+const Base64 = java.util.Base64.Encoder
 
 const log = (thing) => {
     console.log(thing)
@@ -19,6 +19,8 @@ register("command", (...args) => {
         );
     });
 
-    log(Base64.encode("a"))
+    let statusImg = new Image(javax.imageio.ImageIO.read(new java.io.File("~/home/beedit/.config/gdlauncher_next/instances/Skyblock/screenshots/")))
+
+    log(Base64.encode(statusImg))
 
 }).setName("rcmc")

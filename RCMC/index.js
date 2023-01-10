@@ -2,7 +2,7 @@ import WebSocket from "WebSocket";
 import Settings from "./config";
 
 let ws = new WebSocket(`ws://${Settings.host}:${Settings.port}`);
-const mc = mc = Player.getMinecraft()
+const mc = Player.getMinecraft()
 
 
 let unload = false
