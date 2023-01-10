@@ -2,14 +2,19 @@ import WebSocket from "WebSocket";
 import Settings from "./config";
 
 let ws = new WebSocket(`ws://${Settings.host}:${Settings.port}`);
-const mc = Player.getMinecraft()
+const mc = Client.getMinecraft()
 
 
 let unload = false
 let connected = false
 
-function chat(message){
+const chat = (message) => {
     ChatLib.chat("&dRCMC >>&f " + message);
+}
+
+const log = (thing) => {
+    console.log(thing)
+    ChatLib.chat(thing)
 }
 
 if(Settings.enabled){
