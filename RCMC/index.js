@@ -2,7 +2,7 @@ import WebSocket from "WebSocket";
 import Settings from "./config";
 
 let ws = new WebSocket(`ws://${Settings.host}:${Settings.port}`);
-const mc = mc = Client.getMinecraft()
+const mc = mc = Player.getMinecraft()
 
 
 let unload = false
@@ -56,7 +56,9 @@ register("command", (...args) => {
         ws.send(JSON.stringify({ method: "testConnection" }));
     }
     else if (args[0] == "help"){
-        ChatLib.chat("RCMC Help\n")
+        ChatLib.chat("RCMC Help\nIl get around to doing this soon")
+    } else if (args[0] == "shot"){
+        
     }
 }).setName("rcmc").setTabCompletions(["settings", "testconnection"]);
 
