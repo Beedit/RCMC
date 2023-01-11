@@ -22,8 +22,7 @@ register("command", (...args) => {
     let image = FileLib.read(mcDir + "/screenshots/statusImage.png")
 
     // console.log(image)
-    let b64enc = java.util.Base64.getEncoder()
-    b64enc.
+    let b64enc = java.util.Base64.getEncoder().encode(image)
 
     console.log("b64")
     log(b64enc)

@@ -78,7 +78,7 @@ register("command", (...args) => {
         });
     
         let image = FileLib.read(mcDir + "/pxl.png")
-        let test = java.util.Base64.getEncoder().encodeToString(image.getBytes())
+        let test = java.util.Base64.getEncoder().encodeToString(image)
         log(test)
     }
 }).setName("rcmc").setTabCompletions(["settings", "testconnection"]);
