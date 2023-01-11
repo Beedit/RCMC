@@ -15,7 +15,7 @@ const chat = (message) => {
 
 const log = (thing) => {
     console.log(thing)
-    ChatLib.chat(thing)
+    chat(thing)
 }
 
 if(Settings.enabled){
@@ -67,6 +67,7 @@ register("command", (...args) => {
     else if (args[0] == "help"){
         ChatLib.chat("RCMC Help\nIl get around to doing this soon")
     } else if (args[0] == "shot"){
+        log("aaaaaaaa")
         Client.scheduleTask(() => {
             net.minecraft.util.ScreenShotHelper.func_148259_a(
                 Client.getMinecraft().field_71412_D,
@@ -77,9 +78,22 @@ register("command", (...args) => {
             );
         });
     
-        let image = FileLib.read(mcDir + "/pxl.png")
-        let test = java.util.Base64.getEncoder().encodeToString(image)
-        log(test)
+        // let image = FileLib.read(mcDir + "/screenshots/statusImage.png").getBytes()
+        // let test = java.util.Base64.getEncoder().encodeToString(image)
+        // log(mcDir + "screenshots/statusImg.png")
+
+        image = FileLib.read(mcDir + "/screenshots/statusImage.png")
+
+        imageString = null
+        byteArray = new java.io.ByteArrayOutputStream();
+        Base64Encoder = new java.util.Base64.getEncoder()
+        writer = java.io.ImageIO.getWriter();
+        
+        writer.write(image, "png", byteArray);
+        imageBytes = byteArray.toByteArray();
+        imageString = Base64Encoder.encode(imageBytes)
+        
+        console.log(imageString)
     }
 }).setName("rcmc").setTabCompletions(["settings", "testconnection"]);
 
